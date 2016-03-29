@@ -5,9 +5,9 @@ import { RoutingContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import routes from 'routes';
 
-const server = express();
+const app = express();
 
-server.use((req, res) => {
+app.use((req, res) => {
 	const location = createLocation(req.url);
 
 	match({routes, location}, (err, redirectLocation, renderProps) => {
@@ -18,13 +18,11 @@ server.use((req, res) => {
 
 		if (!renderProps) return res.status(404).end('Not found.');
 
-		const InitialComponent = (
-				<RoutingContext { ...renderProps } />
-		);
+		const InitialComponent = (<RoutingContext { ...renderProps } />);
 
 		const componentHTML = renderToString(InitialComponent);
 
-		const HTML = '
+		const HTML = `
 			<!DOCTYPE html>
 			<html>
 				<head>
@@ -36,11 +34,11 @@ server.use((req, res) => {
 					<script type="application/javascript" src="bundle.js"></script>
 				</body>
 			</html>
-		';
+		`;
 	
 		res.end(HTML);
 	});
 
 });
 
-export default server;
+export default app;

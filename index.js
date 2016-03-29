@@ -1,8 +1,10 @@
 'use strict';
 
-require('babel/register'({});
+require('babel-register')({
+	presets: [ 'es2015', 'react' ]
+});
 
-var server = require('./server');
+var server = require('./server').default;
 
 const PORT = process.env.PORT || 3000;
 

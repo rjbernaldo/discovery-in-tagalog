@@ -25,10 +25,10 @@ app.use((req, res) => {
 
 		const InitialComponent = (
 			<Provider store={ store }>
-				<RoutingContext { ...renderProps } />
+				<RouterContext { ...renderProps } />
 			</Provider>
 		);
-		
+
 		const initialState = store.getState();
 
 		const componentHTML = renderToString(InitialComponent);
@@ -41,16 +41,16 @@ app.use((req, res) => {
 					<title>Tuklas</title>
 
 					<script type="application/javascript">
-						window.__INITIAL_STATE__ = $(JSON.stringify(initialState));
+						window.__INITIAL_STATE__ = ${ JSON.stringify(initialState) };
 					</script>
 				</head>
 				<body>
 					<div id="react-view">${ componentHTML }</div>
-					<script type="application/javascript" src="bundle.js"></script>
+					<script type="application/javascript" src="/bundle.js"></script>
 				</body>
 			</html>
 		`;
-	
+
 		res.end(HTML);
 	});
 

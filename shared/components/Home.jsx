@@ -10,12 +10,14 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return { actions: bindActionCreators(actionCreators, dispatch) };
+	return { actions: bindActionCreators(TodoActions, dispatch) };
 }
 
 class Home extends React.Component {
 	render() {
+		console.log(this.props);
 		const { todos, dispatch } = this.props;
+		console.log(todos, dispatch);
 
 		return (
 			<div id="todo-list">
@@ -27,18 +29,3 @@ class Home extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-// @connect(state => ({ todos: state.todos }))
-//
-// export default class Home extends React.Component {
-// 	render() {
-// 		const { todos, dispatch } = this.props;
-//
-// 		return (
-// 			<div id="todo-list">
-// 				<TodosView todos={ todos } { ...bindActionCreators(TodoActions, dispatch) } />
-// 				<TodosForm { ...bindActionCreators(TodoActions, dispatch) } />
-// 			</div>
-// 		);
-// 	}
-// }

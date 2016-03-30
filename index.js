@@ -1,7 +1,7 @@
 'use strict';
 
 require('babel-register')({
-	presets: [ 'es2015', 'react' ]
+	presets: ['es2015', 'react', 'stage-0']
 });
 
 var server = require('./server').default;

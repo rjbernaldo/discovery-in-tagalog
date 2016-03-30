@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class TodosView extends React.Component {
+export class TodosView extends React.Component {
 	handleDelete = (e) => {
 		const id = Number(e.target.dataset.id);
 		this.props.deleteTodo(id);
@@ -32,3 +32,5 @@ export default class TodosView extends React.Component {
 		);
 	}
 }
+
+export default TodosView;

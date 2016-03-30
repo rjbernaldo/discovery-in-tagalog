@@ -24,6 +24,6 @@ const store = createStore(reducer, initialState);
 render(
 	<Provider store={ store }>
 		<Router children={ routes } history={ history } />
-	</Provder>,
+	</Provider>,
 	document.getElementById('react-view')
 );

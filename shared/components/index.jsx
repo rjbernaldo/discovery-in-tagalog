@@ -7,7 +7,7 @@ export default class App extends React.Component {
 				<h1>Todos</h1>
 				<hr />
 
-				{this.props.children}
+				{ this.props.children }
 			</div>
 		);
 	}

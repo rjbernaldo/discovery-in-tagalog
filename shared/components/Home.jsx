@@ -10,19 +10,21 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return { actions: bindActionCreators(TodoActions, dispatch) };
+	return {
+		actions: bindActionCreators(TodoActions, dispatch)
+	};
 }
 
 class Home extends React.Component {
 	render() {
-		console.log(this.props);
 		const { todos, dispatch } = this.props;
-		console.log(todos, dispatch);
+
+		let boundActionCreators = bindActionCreators(TodoActions, dispatch);
 
 		return (
-			<div id="todo-list">
-				<TodosView todos={ todos } { ...bindActionCreators(TodoActions, dispatch) } />
-				<TodosForm { ...bindActionCreators(TodoActions, dispatch) } />
+			<div id="home">
+				<TodosView todos={ todos } { ...boundActionCreators } />
+				<TodosForm { ...boundActionCreators } />
 			</div>
 		);
 	}

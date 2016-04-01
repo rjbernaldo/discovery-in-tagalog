@@ -1,96 +1,144 @@
-import express from 'express'
+import path from 'path'
+import Express from 'express'
 import React from 'react'
-import { renderToString } from 'react-dom/server'
-import { RouterContext, match } from 'react-router'
-import createLocation from 'history/lib/createLocation'
-import routes from 'routes'
-import { createStore, combineReducers } from 'redux'
+import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-// import * as reducers from 'reducers'
 import todoApp from 'reducers'
 import App from 'components/App'
+import { renderToString } from 'react-dom/server'
 
-const app = express()
+const app = Express()
 
-app.use((req, res) => {
-	const location = createLocation(req.url)
-	// const reducer = combineReducers(reducers)
-	// const store = createStore(reducer)
+app.use(handleRender)
+
+function handleRender(req, res) {
 	const store = createStore(todoApp)
-
-	const InitialComponent = (
+	const html = renderToString(
 		<Provider store={ store }>
 			<App />
 		</Provider>
 	)
 
 	const initialState = store.getState()
-	const componentHTML = renderToString(InitialComponent)
 
-	const HTML = `
+	res.send(renderFullPage(html, initialState))
+}
+
+function renderFullPage(html, initialState) {
+	return `
 		<!DOCTYPE html>
 		<html>
 			<head>
 				<meta charset="utf-8">
 				<title>Tuklas</title>
+			</head>
+			<body>
+				<div id="react-view">${ html }</div>
 
 				<script type="application/javascript">
 					window.__INITIAL_STATE__ = ${ JSON.stringify(initialState) };
 				</script>
-			</head>
-			<body>
-				<div id="react-view">${ componentHTML }</div>
 				<script type="application/javascript" src="/bundle.js"></script>
 			</body>
 		</html>
 	`
-
-	res.end(HTML)
-
-	// match({routes, location}, (err, redirectLocation, renderProps) => {
-	// 	if (err) {
-	// 		console.error(err)
-	// 		return res.status(500).end('Internal server error')
-	// 	}
-	//
-	// 	if (!renderProps) return res.status(404).end('Not found.')
-	//
-	// 	// const InitialComponent = (
-	// 	// 	<Provider store={ store }>
-	// 	// 		<RouterContext { ...renderProps } />
-	// 	// 	</Provider>
-	// 	// )
-	// 	const InitialComponent = (
-	// 		<Provider store={ store }>
-	// 			<App />
-	// 		</Provider>
-	// 	)
-	//
-	// 	const initialState = store.getState()
-	//
-	// 	const componentHTML = renderToString(InitialComponent)
-	//
-	// 	const HTML = `
-	// 		<!DOCTYPE html>
-	// 		<html>
-	// 			<head>
-	// 				<meta charset="utf-8">
-	// 				<title>Tuklas</title>
-	//
-	// 				<script type="application/javascript">
-	// 					window.__INITIAL_STATE__ = ${ JSON.stringify(initialState) };
-	// 				</script>
-	// 			</head>
-	// 			<body>
-	// 				<div id="react-view">${ componentHTML }</div>
-	// 				<script type="application/javascript" src="/bundle.js"></script>
-	// 			</body>
-	// 		</html>
-	// 	`
-	//
-	// 	res.end(HTML)
-	// })
-
-})
+}
 
 export default app
+
+// import express from 'express'
+// import React from 'react'
+// import { renderToString } from 'react-dom/server'
+// import { RouterContext, match } from 'react-router'
+// import createLocation from 'history/lib/createLocation'
+// import routes from 'routes'
+// import { createStore, combineReducers } from 'redux'
+// import { Provider } from 'react-redux'
+// // import * as reducers from 'reducers'
+// import todoApp from 'reducers'
+// import App from 'components/App'
+//
+// const app = express()
+//
+// app.use((req, res) => {
+// 	const location = createLocation(req.url)
+// 	// const reducer = combineReducers(reducers)
+// 	// const store = createStore(reducer)
+// 	const store = createStore(todoApp)
+//
+// 	const InitialComponent = (
+// 		<Provider store={ store }>
+// 			<App />
+// 		</Provider>
+// 	)
+//
+// 	const initialState = store.getState()
+// 	const componentHTML = renderToString(InitialComponent)
+//
+// 	const HTML = `
+// 		<!DOCTYPE html>
+// 		<html>
+// 			<head>
+// 				<meta charset="utf-8">
+// 				<title>Tuklas</title>
+//
+// 				<script type="application/javascript">
+// 					window.__INITIAL_STATE__ = ${ JSON.stringify(initialState) };
+// 				</script>
+// 			</head>
+// 			<body>
+// 				<div id="react-view">${ componentHTML }</div>
+// 				<script type="application/javascript" src="/bundle.js"></script>
+// 			</body>
+// 		</html>
+// 	`
+//
+// 	res.end(HTML)
+//
+// 	// match({routes, location}, (err, redirectLocation, renderProps) => {
+// 	// 	if (err) {
+// 	// 		console.error(err)
+// 	// 		return res.status(500).end('Internal server error')
+// 	// 	}
+// 	//
+// 	// 	if (!renderProps) return res.status(404).end('Not found.')
+// 	//
+// 	// 	// const InitialComponent = (
+// 	// 	// 	<Provider store={ store }>
+// 	// 	// 		<RouterContext { ...renderProps } />
+// 	// 	// 	</Provider>
+// 	// 	// )
+// 	// 	const InitialComponent = (
+// 	// 		<Provider store={ store }>
+// 	// 			<App />
+// 	// 		</Provider>
+// 	// 	)
+// 	//
+// 	// 	const initialState = store.getState()
+// 	//
+// 	// 	const componentHTML = renderToString(InitialComponent)
+// 	//
+// 	// 	const HTML = `
+// 	// 		<!DOCTYPE html>
+// 	// 		<html>
+// 	// 			<head>
+// 	// 				<meta charset="utf-8">
+// 	// 				<title>Tuklas</title>
+// 	//
+// 	// 				<script type="application/javascript">
+// 	// 					window.__INITIAL_STATE__ = ${ JSON.stringify(initialState) };
+// 	// 				</script>
+// 	// 			</head>
+// 	// 			<body>
+// 	// 				<div id="react-view">${ componentHTML }</div>
+// 	// 				<script type="application/javascript" src="/bundle.js"></script>
+// 	// 			</body>
+// 	// 		</html>
+// 	// 	`
+// 	//
+// 	// 	res.end(HTML)
+// 	// })
+//
+// })
+//
+// export default app

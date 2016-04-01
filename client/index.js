@@ -10,7 +10,6 @@ import { fromJS } from 'immutable'
 import todoApp from 'reducers'
 import App from 'components/App'
 
-// let store = createStore(todoApp)
 let initialState = window.__INITIAL_STATE__;
 
 Object

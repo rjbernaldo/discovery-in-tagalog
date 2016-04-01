@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=$NODE_PATH:./shared node --harmony .",
+    "start": "NODE_PATH=$NODE_PATH:./common node --harmony .",
     "dev": "npm run start & ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors --config webpack.config.dev",
     "build": "./node_modules/webpack/bin/webpack.js --progress --colors --config webpack.config.prod",
     "test": "echo \"Error: no test specified\" && exit 1"

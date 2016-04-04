@@ -6,7 +6,7 @@ import { Router, browserHistory } from 'react-router'
 import { fromJS } from 'immutable'
 
 import todoApp from 'reducers'
-import App from 'components/App'
+// import App from 'components/App'
 
 let initialState = window.__INITIAL_STATE__;
 

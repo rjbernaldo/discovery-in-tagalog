@@ -5,8 +5,6 @@ import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'
 import { fromJS } from 'immutable'
 
-// import * as reducers from 'reducers'
-// import routes from 'routes'
 import todoApp from 'reducers'
 import App from 'components/App'
 
@@ -18,8 +16,6 @@ Object
 		initialState[key] = fromJS(initialState[key]);
 	});
 
-// const reducer = combineReducers(reducers);
-// const store = createStore(reducer, initialState);
 const store = createStore(todoApp, initialState);
 
 render(

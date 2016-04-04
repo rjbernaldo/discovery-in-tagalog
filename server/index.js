@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 
 import todoApp from 'reducers'
-// import App from 'components/App'
+import App from 'components/App'
 
 const app = Express()
 
@@ -16,7 +16,7 @@ function handleRender(req, res) {
 	const store = createStore(todoApp)
 	const html = renderToString(
 		<Provider store={ store }>
-			// <App />
+			<App />
 		</Provider>
 	)
 

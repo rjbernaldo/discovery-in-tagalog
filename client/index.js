@@ -1,26 +1,16 @@
 import React from 'react'
-import { createStore } from 'redux'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { Router, browserHistory } from 'react-router'
-import { fromJS } from 'immutable'
+import { createStore } from 'redux'
 
 import todoApp from 'reducers'
 import App from 'components/App'
 
-let initialState = window.__INITIAL_STATE__;
-
-Object
-	.keys(initialState)
-	.forEach(key => {
-		initialState[key] = fromJS(initialState[key]);
-	});
-
-const store = createStore(todoApp, initialState);
+const store = createStore(todoApp)
 
 render(
 	<Provider store={ store }>
 		<App />
 	</Provider>,
-	document.getElementById('react-view')
+	document.getElementById('root')
 )

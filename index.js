@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
 require('babel-register')({
 	presets: ['es2015', 'react', 'stage-0']
-});
+})
 
-var server = require('./server').default;
+var server = require('./server').default
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000
 
 server.listen(PORT, function() {
-	console.log('Server listening on', PORT);
-});
+	console.log('Server listening on', PORT)
+})

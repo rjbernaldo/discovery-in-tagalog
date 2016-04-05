@@ -38,7 +38,7 @@ function handleRender(req, res) {
 // 				<div id="react-view">${ html }</div>
 //
 // 				<script type="application/javascript">
-// 					window.__INITIAL_STATE__ = ${ JSON.stringify(initialState) };
+// 					window.__INITIAL_STATE__ = ${ JSON.stringify(initialState) }
 // 				</script>
 // 				<script type="application/javascript" src="/bundle.js"></script>
 // 			</body>

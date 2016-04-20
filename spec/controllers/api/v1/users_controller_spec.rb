@@ -11,9 +11,8 @@ RSpec.describe API::V1::UsersController, type: :controller do
 
         it "returns the information about a reporter on a hash" do
             user_response = JSON.parse(response.body, symbolize_names: true)
-            expect(user_response[:email]).to be(@user.email)
+            expect(user_response[:email]).to eq(@user.email)
+            expect(response.response_code).to eq(200)
         end
-
-        it { should repond_with 200 }
     end
 end

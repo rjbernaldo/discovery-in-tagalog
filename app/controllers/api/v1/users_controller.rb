@@ -17,6 +17,7 @@ class API::V1::UsersController < ApplicationController
 
     def update
         user = User.find(params[:id])
+        
 
         if user.update(user_params)
             render json: user, status: 200, location: [:api, user]

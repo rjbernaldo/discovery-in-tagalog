@@ -55,7 +55,7 @@ RSpec.describe API::V1::UsersController, type: :controller do
             before(:each) do
                 @user = FactoryGirl.create(:user)
                 request.headers["Authorization"] = @user.auth_token
-                patch :update, { id: @user.id, user: { email: "newmail@example.com " } }
+                patch :update, { id: @user.id, user: { email: "newmail@example.com" } }
             end
 
             it "renders the json representation for the updated user" do

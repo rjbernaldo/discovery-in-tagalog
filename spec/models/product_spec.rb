@@ -15,5 +15,6 @@ RSpec.describe Product, type: :model do
         expect(@product.published).to be_falsey
 
         # TODO: Add shoulda matchers
+        # expect(@product).to belongs_to(:user)
     end
 end

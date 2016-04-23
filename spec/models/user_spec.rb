@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before { @user = FactoryGirl.build(:user) }
+  before do
+      @user = FactoryGirl.build(:user)
+  end
 
   it "should be valid" do
     expect(@user).to respond_to(:email)
@@ -10,6 +12,7 @@ RSpec.describe User, type: :model do
     expect(@user).to be_valid
 
     expect(@user).to respond_to(:auth_token)
+    # TODO: Add shoulda matchers
   end
 
   it "should not be valid when email is not present" do

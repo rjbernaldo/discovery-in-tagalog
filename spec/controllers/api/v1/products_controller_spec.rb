@@ -21,7 +21,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
         end
 
         it "returns 4 records from the database" do
-            products_response = json_response
+            products_response = json_response[:products]
             expect(products_response.count).to eq(4)
             expect(response.response_code).to eq(200)
         end

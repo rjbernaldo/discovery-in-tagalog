@@ -32,4 +32,28 @@ describe Authenticable do
             expect(response.response_code).to eq(401)
         end
     end
+
+    describe "user_signed_in?" do
+        context "when there is a user in a session" do
+            before do
+                @user = FactoryGirl.create(:user)
+                allow(authentication).to receive(:current_user).and_return(@user)
+            end
+
+            it "should be the user currently signed in" do
+                expect(authentication.current_user).to eq(@user)
+            end
+        end
+
+        context "when there is no user in a session" do
+            before do
+                @user = FactoryGirl.create(:user)
+                allow(authentication).to receive(:current_user).and_return(nil)
+            end
+
+            it "should not be the user currently signed in" do
+                expect(authentication.current_user).to eq(nil)
+            end
+        end
+    end
 end

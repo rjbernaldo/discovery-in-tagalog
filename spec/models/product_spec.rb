@@ -17,4 +17,20 @@ RSpec.describe Product, type: :model do
         # TODO: Add shoulda matchers
         # expect(@product).to belongs_to(:user)
     end
+
+    describe ".filter_by_title" do
+        before(:each) do
+            @product1 = FactoryGirl.create(:product, title: "AAA1")
+            @product2 = FactoryGirl.create(:product, title: "AAA2")
+            @product3 = FactoryGirl.create(:product, title: "BBB3")
+            @product4 = FactoryGirl.create(:product, title: "BBB4")
+        end
+
+        context "when a filter is set" do
+            it "only returns the matching products" do
+                expect(Product.filter_by_title("AAA").count).to eq(2)
+                expect(Product.filter_by_title("AAA").sort).to match_array([@product1, @product2])
+            end
+        end
+    end
 end

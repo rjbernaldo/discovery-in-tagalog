@@ -12,6 +12,11 @@ RSpec.describe API::V1::UsersController, type: :controller do
             expect(user_response[:email]).to eq(@user.email)
             expect(response.response_code).to eq(200)
         end
+
+        it "has the product ids as an embedded object" do
+          user_response = json_response[:user]
+          expect(user_response[:product_ids]).to eq([])
+        end
     end
 
     describe "CREATE user" do

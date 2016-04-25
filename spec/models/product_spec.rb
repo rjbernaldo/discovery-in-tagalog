@@ -33,4 +33,20 @@ RSpec.describe Product, type: :model do
             end
         end
     end
+
+    describe ".recent" do
+        before(:each) do
+            @product1 = FactoryGirl.create(:product, title: "AAA1")
+            @product2 = FactoryGirl.create(:product, title: "AAA2")
+            @product3 = FactoryGirl.create(:product, title: "BBB3")
+            @product4 = FactoryGirl.create(:product, title: "BBB4")
+
+            @product2.touch
+            @product3.touch
+        end
+
+        it "only returns the matching products" do
+            expect(Product.recent).to match_array([@product3, @product2, @product4, @product1])
+        end
+    end
 end

@@ -4,5 +4,6 @@ class Product < ActiveRecord::Base
 
     belongs_to :user
 
-    scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%") }
+    scope :filter_by_title, -> (keyword) { where("lower(title) LIKE ?", "%#{keyword.downcase}%") }
+    scope :recent, -> { order(:updated_at) }
 end

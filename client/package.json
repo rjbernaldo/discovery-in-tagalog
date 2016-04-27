@@ -24,6 +24,7 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.16.0",
     "isparta-instrumenter-loader": "^1.0.0",
+    "karma": "^0.13.22",
     "postcss-loader": "^0.8.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",

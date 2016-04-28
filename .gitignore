@@ -20,3 +20,4 @@ log/*
 # Client side ignore
 client/node_modules
 client/dist
+client/coverage

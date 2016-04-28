@@ -18,8 +18,8 @@ module.exports = function makeWebpackConfig() {
   config.output = isTest ? {} : {
     path: __dirname + '/dist',
     publicPath: isProd ? '/' : 'http://localhost:8080',
-    filename: isProd ? '[name].[hash].js' : '[name].bundel.js',
-    chunkFilename: isProd ? '[name].[hash].js' : '[name].bundel.js',
+    filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
+    chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js',
   }
 
   config.devtool = isTest ? 'inline-source-map' : isProd ? 'source-map' : 'eval-source-map';
@@ -69,7 +69,6 @@ module.exports = function makeWebpackConfig() {
         template: './src/public/index.html',
         inject: 'body'
       }),
-
       new ExtractTextPlugin('[name].[hash].css', { disable: !isProd })
     )
   }

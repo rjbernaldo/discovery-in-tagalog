@@ -4,10 +4,22 @@
         <meta charset="UTF-8">
         <title>Tuklas</title>
         <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-        
+
         <base href="/">
     </head>
-    <body>
-        <app></app>
+    <body ng-app="app">
+      <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" ui-sref="#">Tuklas App</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a ui-sref="home">Home</a></li>
+          <li><a ui-sref="about">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="container">
+        <div ui-view></div>
+      </div>
     </body>
 </html>

@@ -13,11 +13,13 @@ var isProd = ENV === 'build';
 module.exports = function makeWebpackConfig() {
   var config = {};
 
-  config.entry = isTest ? {} : { app: './src/app/app.js' }
+  config.entry = isTest ? {} : {
+    app: './src/app/app.js'
+  }
 
   config.output = isTest ? {} : {
     path: __dirname + '/dist',
-    publicPath: isProd ? '/' : 'http://localhost:8080',
+    publicPath: isProd ? '/' : 'http://localhost:8080/',
     filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js',
   }
@@ -89,6 +91,11 @@ module.exports = function makeWebpackConfig() {
         from: __dirname + '/src/public'
       }])
     )
+  }
+
+  config.devServer = {
+    contentBase: './src/public',
+    stats: 'minimal'
   }
 
   return config;

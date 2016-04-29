@@ -1,25 +1,42 @@
 import angular from 'angular';
 
+import 'bootstrap-loader';
 import '../style/app.css';
-
-let app = () => {
-    return {
-        template: require('./app.html'),
-        controller: 'AppController',
-        controllerAs: 'vm'
-    }
-};
-
-class AppController {
-    constructor() {
-        this.url = 'https://google.com'
-    }
-}
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [])
-    .directive('app', app)
-    .controller('AppController', AppController);
+// let app = () => {
+//     return {
+//         template: require('./app.html'),
+//         controller: 'AppController',
+//         controllerAs: 'vm'
+//     }
+// };
+//
+// class AppController {
+//     constructor() {
+//         this.url = 'https://google.com'
+//     }
+// }
+
+let routerConfig = ($stateProvider, $urlRouterProvider) => {
+  $urlRouterProvider.otherwise('/home');
+
+  $stateProvider
+    .state('home', {
+      url: '/home',
+      temlate: 'partial-home'
+    })
+    .state('about', {
+
+    })
+
+}
+
+
+angular.module(MODULE_NAME, ['ui.router'])
+  .config(['$stateProvider', '$urlRouterProvider', routerConfig]);
+    // .directive('app', app)
+    // .controller('AppController', AppController);
 
 export default MODULE_NAME;

@@ -16,7 +16,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-		'src/tests.webpack.js': ['webpack', 'sourcemap']
+		    'src/tests.webpack.js': ['webpack', 'sourcemap']
     },
 
     // start these browsers
@@ -34,15 +34,19 @@ module.exports = function(config) {
 			{ type: 'html' }
 		]
 	},
-	
+
 	webpack: require('./webpack.config'),
 
-    port: 9876,
-    colors: true,
+  webpackMiddleware: {
+    noInfo: 'errors-only'
+  }
+
+    // port: 9876,
+    // colors: true,
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    // logLevel: config.LOG_INFO,
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     // basePath: '',

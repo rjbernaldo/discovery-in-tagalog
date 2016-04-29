@@ -22,7 +22,14 @@ module.exports = function makeWebpackConfig() {
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js',
   }
 
-  config.devtool = isTest ? 'inline-source-map' : isProd ? 'source-map' : 'eval-source-map';
+  // config.devtool = isTest ? 'inline-source-map' : isProd ? 'source-map' : 'eval-source-map';
+  if (isTest) {
+    config.devtool = 'inline-source-map';
+  } else if (isProd) {
+    config.devtool = 'source-map';
+  } else {
+    config.devtool = 'eval-source-map';
+  }
 
   config.module = {
     preLoaders: [],
@@ -75,7 +82,7 @@ module.exports = function makeWebpackConfig() {
 
   if (isProd) {
     config.plugins.push(
-      new webpack.NoErrorsPlugin, // Only emit files when there are no errors
+      new webpack.NoErrorsPlugin(), // Only emit files when there are no errors
       new webpack.optimize.DedupePlugin(), // Dedupe modules in the output
       new webpack.optimize.UglifyJsPlugin(), // Minify all javascript, switch loaders to minimizing mode
       new CopyWebpackPlugin([{

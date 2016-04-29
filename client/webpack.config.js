@@ -48,6 +48,8 @@ module.exports = function makeWebpackConfig() {
     }, {
       test: /\.html$/,
       loader: 'raw'
+    }, {
+      test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/, loader: 'imports?jQuery=jquery'
     }]
   };
 

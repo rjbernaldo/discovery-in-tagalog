@@ -4,7 +4,9 @@ import uirouter from 'angular-ui-router';
 import routes from './dashboard.routes';
 import DashboardController from './dashboard.controller';
 
-export default angular.module('app.dashboard', [uirouter])
+import Products from '../services/products.service';
+
+export default angular.module('app.dashboard', [uirouter, Products])
   .config(routes)
   .controller('DashboardController', DashboardController)
   .name;

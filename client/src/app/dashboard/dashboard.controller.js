@@ -1,9 +1,7 @@
 export default class DashboardController {
-  constructor() {
-    this.name = 'World';
-  }
-
-  changeName() {
-    this.name = 'angular-tips';
+  constructor(products) {
+    this.products = products.getProducts();
   }
 }
+
+DashboardController.$inject = ['Products'];

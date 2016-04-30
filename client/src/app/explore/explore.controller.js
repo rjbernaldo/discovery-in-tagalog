@@ -1,5 +1,5 @@
 export default class ExploreController {
-  contructor() {
+  constructor() {
     this.name = 'World';
   }
 

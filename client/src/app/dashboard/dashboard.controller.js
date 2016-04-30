@@ -1,5 +1,5 @@
 export default class DashboardController {
-  contructor() {
+  constructor() {
     this.name = 'World';
   }
 

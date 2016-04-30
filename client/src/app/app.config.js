@@ -1,14 +1,6 @@
-config.$inject = ['$stateProvider', '$urlRouterProvider'];
+config.$inject = ['$urlRouterProvider', '$locationProvider'];
 
-export default function config($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/home');
-
-  $stateProvider
-    .state('home', {
-      url: '/home',
-      template: 'partial-home'
-    })
-    .state('about', {
-
-    })
+export default function config($urlRouterProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
+  $urlRouterProvider.otherwise('/dashboard');
 }

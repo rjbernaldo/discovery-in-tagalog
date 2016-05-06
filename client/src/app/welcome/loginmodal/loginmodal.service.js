@@ -4,9 +4,7 @@ export default class LoginModalService {
   }
 
   openModal() {
-    this.$modal.open({
-
-    });
+    this.$modal.open({});
   }
 }
 

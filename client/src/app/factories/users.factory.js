@@ -1,5 +1,5 @@
-export default function AuthFactory($rootScope, $resource) {
-  return $resource($rootScope.apiUrl + '/users/:user');
+export default function UsersFactory($rootScope, $resource) {
+  return $resource($rootScope.apiUrl + '/sessions');
 }
 
-AuthFactory.inject = ['$rootScope', '$resource'];
+UsersFactory.inject = ['$rootScope', '$resource'];

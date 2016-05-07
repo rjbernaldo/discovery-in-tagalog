@@ -6,7 +6,7 @@ export default function routes($stateProvider) {
       abstract: true,
       template: '<ui-view/>',
       data: {
-        // requireLogin: false
+        requireLogin: true
       }
     });
 }

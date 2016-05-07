@@ -4,9 +4,10 @@ import uirouter from 'angular-ui-router';
 import routes from './welcome.routes';
 import WelcomeController from './welcome.controller';
 
-import LoginModal from './loginmodal';
+import Login from './login';
+import Signup from './signup';
 
-export default angular.module('app.welcome', [uirouter, LoginModal])
+export default angular.module('welcome', [uirouter, Login, Signup])
   .config(routes)
   .controller('WelcomeController', WelcomeController)
   .name;

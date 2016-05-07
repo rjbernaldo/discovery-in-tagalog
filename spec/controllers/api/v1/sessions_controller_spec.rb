@@ -11,12 +11,12 @@ RSpec.describe Api::V1::SessionsController, type: :controller do describe "CREAT
                 post :create, { session: credentials }
             end
 
-            # it "returns the user record corresponding to the given credentials" do
-            #     @user.reload
-            #     user_response = json_response[:user]
-            #     expect(user_response[:auth_token]).to eq(@user.auth_token)
-            #     expect(response.response_code).to eq(200)
-            # end
+            it "returns the user record corresponding to the given credentials" do
+                @user.reload
+                user_response = json_response[:user]
+                expect(user_response[:auth_token]).to eq(@user.auth_token)
+                expect(response.response_code).to eq(200)
+            end
         end
 
         context "when the credentials are incorrect" do
@@ -39,8 +39,8 @@ RSpec.describe Api::V1::SessionsController, type: :controller do describe "CREAT
             delete :destroy, id: @user.auth_token
         end
 
-        # it "should respond appropriately" do
-        #     expect(response.response_code).to eq(204)
-        # end
+        it "should respond appropriately" do
+            expect(response.response_code).to eq(204)
+        end
     end
 end

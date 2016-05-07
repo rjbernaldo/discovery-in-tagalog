@@ -7,6 +7,7 @@ import '../style/app.css';
 
 import config from './app.config';
 import routes from './app.routes';
+import run from './app.run';
 import welcome from './welcome';
 import dashboard from './dashboard';
 import explore from './explore';
@@ -14,19 +15,6 @@ import explore from './explore';
 angular.module(MODULE_NAME, [uirouter, welcome, dashboard, explore])
   .config(config)
   .config(routes)
-  .run(runBlock); // move this to factory
-
-runBlock.inject = ['$rootScope'];
-
-function runBlock($rootScope) {
-  // $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
-  //   var requireLogin = toState.data.requireLogin;
-  //
-  //   if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
-  //     event.preventDefault();
-  //     // call login modal
-  //   }
-  // });
-}
+  .run(run); // move this to factory
 
 export default MODULE_NAME;

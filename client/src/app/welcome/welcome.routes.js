@@ -4,7 +4,10 @@ export default function routes($stateProvider) {
       url: '/',
       template: require('./welcome.html'),
       controller: 'WelcomeController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      data: {
+        requireLogin: false
+      }
     });
 }
 

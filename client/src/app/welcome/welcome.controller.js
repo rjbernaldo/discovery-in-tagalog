@@ -2,10 +2,7 @@ export default class WelcomeController {
   constructor($state, $rootScope) {
     this.$state = $state;
     this.$rootScope = $rootScope;
-  }
-
-  login() {
-    this.$state.go('welcome.login');
+    this.$state.go('app.welcome.login');
   }
 }
 

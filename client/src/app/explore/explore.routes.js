@@ -6,6 +6,9 @@ export default function routes($stateProvider) {
       url: '/explore',
       template: require('./explore.html'),
       controller: 'ExploreController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      data: {
+        requireLogin: true
+      }
     });
 }

@@ -1,13 +1,28 @@
 <h1>Signup</h1>
 <form novalidate>
+  <div ng-show="vm.errors.email.length > 0" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{ "Email " + vm.errors.email[0] }}
+  </div>
   <fieldset class="form-group">
     <label for="email">Email</label>
     <input type="text" ng-model="vm.form.email" class="form-control" id="email"></input>
   </fieldset>
+  <div ng-show="vm.errors.password.length > 0" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{ "Password " + vm.errors.password[0] }}
+  </div>
   <fieldset class="form-group">
     <label for="password">Password</label>
     <input type="text" ng-model="vm.form.password" class="form-control" id="password"></input>
   </fieldset>
+  <div ng-show="vm.errors.password_confirmation.length > 0" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{ "Password Confirmation " + vm.errors.password_confirmation[0] }}
+  </div>
   <fieldset class="form-group">
     <label for="password_confirmation">Password Confirmation</label>
     <input type="text" ng-model="vm.form.password_confirmation" class="form-control" id="password_confirmation"></input>

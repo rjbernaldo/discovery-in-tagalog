@@ -1,7 +1,6 @@
 export default class DashboardController {
-  constructor(products) {
-    this.products = products.getProducts();
+  constructor() {
   }
 }
 
-DashboardController.$inject = ['Products'];
+DashboardController.$inject = [];

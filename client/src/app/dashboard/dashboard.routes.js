@@ -6,6 +6,9 @@ export default function routes($stateProvider) {
       url: '/dashboard',
       template: require('./dashboard.html'),
       controller: 'DashboardController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      data: {
+        requireLogin: true
+      }
     });
 }

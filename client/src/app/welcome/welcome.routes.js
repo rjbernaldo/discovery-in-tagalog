@@ -1,7 +1,7 @@
 export default function routes($stateProvider) {
   $stateProvider
-    .state('welcome', {
-      url: '/',
+    .state('app.welcome', {
+      url: '/welcome',
       template: require('./welcome.html'),
       controller: 'WelcomeController',
       controllerAs: 'vm',

@@ -1,11 +1,12 @@
 export default class WelcomeController {
-  constructor($state) {
-    this.state = $state;
+  constructor($state, $rootScope) {
+    this.$state = $state;
+    this.$rootScope = $rootScope;
   }
 
   login() {
-    this.state.go('welcome.login');
+    this.$state.go('welcome.login');
   }
 }
 
-WelcomeController.inject = ['$state'];
+WelcomeController.inject = ['$state', '$rootScope'];

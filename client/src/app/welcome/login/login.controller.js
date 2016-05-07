@@ -1,14 +1,21 @@
 export default class LoginController {
-  constructor($state, Sessions) {
-    this.state = $state;
+  constructor($state, $rootScope, Sessions) {
+    this.$state = $state;
+    this.$rootScope = $rootScope;
+
     this.Sessions = Sessions;
     this.form = {};
   }
 
   submitForm() {
+    this.errors = undefined;
+
     this.Sessions.save({ session: this.form }, (res) => {
-      console.log('success', res);
+      this.$rootScope.currentUser = res.user;
+      
+      this.$state.go('app.dashboard');
       /*
+       * console.log('success', res);
        * res.user
        * auth_token: "-AKU3QT3TYLwjB_XZ5mw"
        * created_at: "2016-05-07T06:05:36.671Z"
@@ -19,8 +26,10 @@ export default class LoginController {
        *
        */
     }, (error) => {
-      console.log('error', error);
+      this.errors = error.data.errors;
+
       /*
+       * console.log('error', error);
        * error.data.errors = String
        *
        */
@@ -28,4 +37,4 @@ export default class LoginController {
   }
 }
 
-LoginController.inject = ['$state', 'Sessions'];
+LoginController.inject = ['$state', '$rootScope', 'Sessions'];

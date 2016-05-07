@@ -7,8 +7,12 @@ export default function run($rootScope, $state) {
     if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
       event.preventDefault();
 
-      $state.go('welcome');
+      $state.go('app.welcome');
     }
+  });
+
+  $rootScope.$watch('currentUser', () => {
+    $rootScope.isLoggedIn = $rootScope.currentUser !== undefined;
   });
 }
 

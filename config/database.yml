@@ -9,10 +9,6 @@ default: &default
   pool: 5
   timeout: 5000
 
-development:
-  <<: *default
-  database: db/development.sqlite3
-
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
@@ -20,6 +16,21 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: tuklas_development
+  host: localhost
+  pool: 5
+  username: tuklas
+  password: tuklas
+
+# TODO: Edit this before deployment
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: tuklas
+  host: localhost
+  pool: 5
+  username: tuklas
+  password: tuklas

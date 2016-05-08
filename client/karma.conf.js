@@ -37,9 +37,9 @@ module.exports = function(config) {
 
 	webpack: require('./webpack.config'),
 
-  webpackMiddleware: {
-    noInfo: 'errors-only'
-  }
+    webpackMiddleware: {
+      noInfo: 'errors-only'
+    }
 
     // port: 9876,
     // colors: true,

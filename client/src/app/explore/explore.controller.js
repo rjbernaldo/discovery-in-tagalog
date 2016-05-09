@@ -1,15 +1,13 @@
 export default class ExploreController {
-  constructor(Products) {
+  constructor($state, Products) {
+    this.$state = $state;
+
     this.Products = Products;
     this.products = [];
 
     this.Products.query((res) => {
       this.products = chunk(res.products, 4);
     });
-  }
-
-  changeName() {
-    this.name = 'angular-tips';
   }
 }
 
@@ -23,4 +21,4 @@ function chunk(set, size) {
   return newSet;
 }
 
-ExploreController.$inject = ['Products'];
+ExploreController.$inject = ['$state', 'Products'];

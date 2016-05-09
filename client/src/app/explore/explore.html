@@ -2,7 +2,7 @@
 
 <div class="row" ng-repeat="productSet in vm.products">
   <ul class="thumbnails list-unstyled">
-    <li class="col-md-3" ng-repeat="product in productSet">
+    <li class="col-md-3" ng-repeat="product in productSet" ui-sref="app.details({ id: product.id })">
       <div class="thumbnail" style="padding: 0">
         <div style="padding:4px">
           <img alt="300x200" style="width: 100%" src="http://placehold.it/200x150">

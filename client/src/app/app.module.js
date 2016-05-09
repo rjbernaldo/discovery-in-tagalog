@@ -10,14 +10,14 @@ import config from './app.config';
 import routes from './app.routes';
 import run from './app.run';
 
-import authentication from './authentication';
-import home from './home';
-import explore from './explore';
-import start from './start';
+import Authentication from './authentication';
+import Home from './home';
+import Explore from './explore';
+import Details from './details';
+import Start from './start';
+import Factories from './factories'
 
-import factories from './factories'
-
-angular.module(MODULE_NAME, [uirouter, authentication, home, explore, start, factories])
+angular.module(MODULE_NAME, [uirouter, Authentication, Home, Explore, Details, Start, Factories])
   .controller('AppController', AppController)
   .config(config)
   .config(routes)

@@ -1,9 +1,16 @@
 export default class ExploreController {
-  constructor() {
-    this.name = 'World';
+  constructor(Products) {
+    this.Products = Products;
+    this.products = [];
+
+    this.Products.query((res) => {
+      console.log('res', res);
+    });
   }
 
   changeName() {
     this.name = 'angular-tips';
   }
 }
+
+ExploreController.$inject = ['Products'];

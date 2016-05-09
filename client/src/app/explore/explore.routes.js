@@ -8,7 +8,7 @@ export default function routes($stateProvider) {
       controller: 'ExploreController',
       controllerAs: 'vm',
       data: {
-        requireLogin: true
+        requireLogin: false
       }
     });
 }

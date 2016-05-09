@@ -13,7 +13,7 @@ export default class LoginController {
     this.Sessions.save({ session: this.form }, (res) => {
       this.$rootScope.currentUser = res.user;
       
-      this.$state.go('app.dashboard');
+      this.$state.go('app.explore');
       /*
        * console.log('success', res);
        * res.user

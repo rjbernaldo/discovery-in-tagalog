@@ -9,7 +9,7 @@ export default class AppController {
     this.Sessions.delete({ id: this.$rootScope.currentUser.auth_token }, (res) => {
       this.$rootScope.currentUser = undefined;
       
-      this.$state.go('app.welcome.login');
+      this.$state.go('app.authentication.login');
       /*
        * console.log('success', res);
        * res.user

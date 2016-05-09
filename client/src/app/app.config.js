@@ -1,6 +1,6 @@
 export default function config($urlRouterProvider, $locationProvider, $httpProvider) {
   $locationProvider.html5Mode(true);
-  $urlRouterProvider.otherwise('/welcome');
+  $urlRouterProvider.otherwise('/');
 
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];

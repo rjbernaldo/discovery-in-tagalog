@@ -1,9 +1,9 @@
 export default function routes($stateProvider) {
   $stateProvider
-    .state('app.welcome', {
-      url: '/welcome',
-      template: require('./welcome.html'),
-      controller: 'WelcomeController',
+    .state('app.authentication', {
+      url: '/authentication',
+      template: require('./authentication.html'),
+      controller: 'AuthenticationController',
       controllerAs: 'vm',
       data: {
         requireLogin: false

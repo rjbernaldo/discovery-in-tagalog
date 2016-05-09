@@ -1,18 +1,17 @@
 export default class StartController {
-  constructor($state, $rootScope, Sessions) {
+  constructor($state, $rootScope, UserProducts) {
     this.$state = $state;
     this.$rootScope = $rootScope;
 
-    this.Sessions = Sessions;
+    this.UserProducts = UserProducts;
     this.form = {};
   }
 
   submitForm() {
     this.errors = undefined;
 
-    this.Sessions.save({ session: this.form }, (res) => {
-      this.$rootScope.currentUser = res.user;
-      
+    this.UserProducts.save({ product: this.form }, (res) => {
+      console.log('res', res);
       this.$state.go('app.explore');
       /*
        * console.log('success', res);
@@ -37,4 +36,4 @@ export default class StartController {
   }
 }
 
-StartController.inject = ['$state', '$rootScope', 'Sessions'];
+StartController.inject = ['$state', '$rootScope', 'UserProducts'];

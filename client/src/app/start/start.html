@@ -1,12 +1,41 @@
-<h1>START</h1>
+<h1>START A PROJECT</h1>
 <form novalidate>
+  <div ng-show="vm.errors.title.length > 0" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{ "Title " + vm.errors.title[0] }}
+  </div>
   <fieldset class="form-group">
-    <label for="email">Email</label>
-    <input type="text" ng-model="vm.form.email" class="form-control" id="email"></input>
+    <label for="title">Title</label>
+    <input type="text" ng-model="vm.form.title" class="form-control" id="title"></input>
   </fieldset>
+  <div ng-show="vm.errors.price.length > 0" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{ "Price " + vm.errors.price[0] }}
+  </div>
   <fieldset class="form-group">
-    <label for="password">Password</label>
-    <input type="text" ng-model="vm.form.password" class="form-control" id="password"></input>
+    <label for="price">Price</label>
+    <input type="text" ng-model="vm.form.price" class="form-control" id="price"></input>
   </fieldset>
+  <div ng-show="vm.errors.description.length > 0" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{ "Description " + vm.errors.description[0] }}
+  </div>
+  <fieldset class="form-group">
+    <label for="description">Description</label>
+    <input type="text" ng-model="vm.form.description" class="form-control" id="description"></input>
+  </fieldset>
+  <div ng-show="vm.errors.published.length > 0" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{ "Published " + vm.errors.published[0] }}
+  </div>
+  <fieldset class="form-group">
+    <label for="published">Published</label>
+    <input type="text" ng-model="vm.form.published" class="form-control" id="published"></input>
+  </fieldset>
+
   <button type="submit" ng-click="vm.submitForm()" class="btn btn-primary">Submit</button>
 </form>

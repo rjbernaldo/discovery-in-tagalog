@@ -70,7 +70,6 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
 
         it "renders the json representation for the product just created" do
           product_response = json_response[:product]
-          puts json_response
           expect(product_response[:title]).to eq(@product_attributes[:title])
         end
       end
@@ -81,6 +80,36 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
           @invalid_product_attributes = { title: "Smart TV", price: "Fifteen Dollars" }
           api_authorization_header user.auth_token
           post :create, { user_id: user.id, product: @invalid_product_attributes }
+        end
+
+        it "renders errors" do
+          product_response = json_response
+          expect(product_response).to have_key(:errors)
+        end
+      end
+    end
+
+    describe "PUT/PATCH #update" do
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        @product = FactoryGirl.create(:product, user: @user)
+        api_authorization_header @user.auth_token
+      end
+
+      context "when it is updated" do
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @product.id, product: { title: "Test" }}
+        end
+
+        it "renders the json representation for the updated product" do
+          product_response = json_response[:product]
+          expect(product_response[:title]).to eq("Test")
+        end
+      end
+
+      context "when it is not updated" do
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @product.id, product: { price: "Test" }}
         end
 
         it "renders errors" do

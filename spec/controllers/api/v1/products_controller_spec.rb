@@ -58,4 +58,35 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
             end
         end
     end
+
+    describe "POST #create" do
+      context "when it is successfully created" do
+        before(:each) do
+          user = FactoryGirl.create(:user)
+          @product_attributes = FactoryGirl.attributes_for(:product)
+          api_authorization_header user.auth_token
+          post :create, { user_id: user.id, product: @product_attributes }
+        end
+
+        it "renders the json representation for the product just created" do
+          product_response = json_response[:product]
+          puts json_response
+          expect(product_response[:title]).to eq(@product_attributes[:title])
+        end
+      end
+
+      context "when it is not created" do
+        before(:each) do
+          user = FactoryGirl.create(:user)
+          @invalid_product_attributes = { title: "Smart TV", price: "Fifteen Dollars" }
+          api_authorization_header user.auth_token
+          post :create, { user_id: user.id, product: @invalid_product_attributes }
+        end
+
+        it "renders errors" do
+          product_response = json_response
+          expect(product_response).to have_key(:errors)
+        end
+      end
+    end
 end

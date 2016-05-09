@@ -1,4 +1,4 @@
-<h1>LOGIN</h1>
+<h1>Login</h1>
 <form novalidate>
   <div ng-show="vm.errors.email.length > 0" class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -20,3 +20,6 @@
   </fieldset>
   <button type="submit" ng-click="vm.submitForm()" class="btn btn-primary">Submit</button>
 </form>
+
+<br />
+<a ui-sref="app.authentication.signup">Create new account</a>

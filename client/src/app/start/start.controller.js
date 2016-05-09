@@ -1,21 +1,22 @@
-export default class SignupController {
-  constructor($state, $rootScope, Users) {
+export default class StartController {
+  constructor($state, $rootScope, Sessions) {
     this.$state = $state;
     this.$rootScope = $rootScope;
 
-    this.Users = Users;
+    this.Sessions = Sessions;
     this.form = {};
   }
 
   submitForm() {
     this.errors = undefined;
 
-    this.Users.save({ user: this.form }, (res) => {
+    this.Sessions.save({ session: this.form }, (res) => {
       this.$rootScope.currentUser = res.user;
       
       this.$state.go('app.explore');
       /*
        * console.log('success', res);
+       * res.user
        * auth_token: "-AKU3QT3TYLwjB_XZ5mw"
        * created_at: "2016-05-07T06:05:36.671Z"
        * email: "test+7@test.com"
@@ -26,17 +27,14 @@ export default class SignupController {
        */
     }, (error) => {
       this.errors = error.data.errors;
-      console.log(this.errors);
+
       /*
-       * error.data.errors = {
-       *    email: [],
-       *    password: [],
-       *    password_confirmation: {]
-       * }
+       * console.log('error', error);
+       * error.data.errors = String
        *
        */
     });
   }
 }
 
-SignupController.inject = ['$state', '$rootScope', 'Users'];
+StartController.inject = ['$state', '$rootScope', 'Sessions'];

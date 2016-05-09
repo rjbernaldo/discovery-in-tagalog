@@ -7,7 +7,7 @@ export default function run($rootScope, $state) {
     if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
       event.preventDefault();
 
-      $state.go('app.welcome');
+      $state.go('app.authentication.login');
     }
   });
 

@@ -13,12 +13,14 @@ import run from './app.run';
 import authentication from './authentication';
 import home from './home';
 import explore from './explore';
+import start from './start';
+
 import factories from './factories'
 
-angular.module(MODULE_NAME, [uirouter, authentication, home, explore, factories])
+angular.module(MODULE_NAME, [uirouter, authentication, home, explore, start, factories])
   .controller('AppController', AppController)
   .config(config)
   .config(routes)
-  .run(run); // move this to factory
+  .run(run);
 
 export default MODULE_NAME;

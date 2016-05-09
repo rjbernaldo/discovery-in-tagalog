@@ -1,0 +1,12 @@
+<h1>START</h1>
+<form novalidate>
+  <fieldset class="form-group">
+    <label for="email">Email</label>
+    <input type="text" ng-model="vm.form.email" class="form-control" id="email"></input>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="password">Password</label>
+    <input type="text" ng-model="vm.form.password" class="form-control" id="password"></input>
+  </fieldset>
+  <button type="submit" ng-click="vm.submitForm()" class="btn btn-primary">Submit</button>
+</form>

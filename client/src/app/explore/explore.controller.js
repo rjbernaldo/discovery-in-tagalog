@@ -4,13 +4,23 @@ export default class ExploreController {
     this.products = [];
 
     this.Products.query((res) => {
-      console.log('res', res);
+      this.products = chunk(res.products, 4);
     });
   }
 
   changeName() {
     this.name = 'angular-tips';
   }
+}
+
+function chunk(set, size) {
+  let newSet = [];
+
+  for (var i = 0; i < set.length; i+=size) {
+    newSet.push(set.slice(i, i+size));
+  }
+
+  return newSet;
 }
 
 ExploreController.$inject = ['Products'];

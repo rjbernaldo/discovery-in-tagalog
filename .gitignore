@@ -21,3 +21,5 @@ log/*
 client/node_modules
 client/dist
 client/coverage
+
+.DS_Store

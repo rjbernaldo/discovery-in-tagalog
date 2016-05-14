@@ -6,7 +6,7 @@ export default function routes($stateProvider) {
       controller: 'StartController',
       controllerAs: 'vm',
       data: {
-        requireLogin: true
+        requireLogin: false
       }
     });
 }

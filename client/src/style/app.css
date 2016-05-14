@@ -1,3 +1,20 @@
 body {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
+}
+
+.jumbotron {
+  color: white;
+  height: 550px;
+  padding-top: 200px;
+  background-image: url('../public/img/intro-bg.jpg');
+  background-size: cover;
+}
+
+.text-bg {
+  text-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
+}
+
+.navbar {
+  background-color: white;
+  margin-bottom: 0px;
 }

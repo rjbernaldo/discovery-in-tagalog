@@ -4,7 +4,8 @@ import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import 'bootstrap-loader';
 import '../style/app.css';
-import '../style/grayscale.css';
+// import '../style/custom.css';
+// import '../style/grayscale.css';
 
 import AppController from './app.controller';
 import config from './app.config';

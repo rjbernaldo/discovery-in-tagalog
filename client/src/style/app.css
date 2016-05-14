@@ -27,3 +27,9 @@ body {
 .pb25 {
   padding-bottom: 25px;
 }
+
+.download-section {
+  height: 250px;
+  background-image: url('../public/img/downloads-bg.jpg');
+  background-size: cover;
+}

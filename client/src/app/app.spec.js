@@ -12,8 +12,8 @@ describe('app', () => {
             });
         });
 
-        it('should contain the starter url', () => {
-            expect(controller.url).toBe('https://google.com');
-        });
+        // it('should contain the starter url', () => {
+        //     expect(controller.url).toBe('https://google.com');
+        // });
     });
 });
